@@ -1,0 +1,8 @@
+drag shortcut / exe on gui. 
+
+build profile 
+
+
+load json config. append dropped exes to in memory
+
+on close save to json, overwrite 
