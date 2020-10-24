@@ -3,6 +3,8 @@ using core;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.IO;
+using System.Runtime.InteropServices;
 
 namespace gui
 {
@@ -74,6 +76,16 @@ namespace gui
             {
                 modelView.UpdateParameterMethod(param, (StartupMethod)senderascombo.SelectedItem);
             }
+        }
+
+        private void dgParameters_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (dgParameters.SelectedItem == null) return;
+            if (!(dgParameters.SelectedItem is StartupParameter param)) return;
+            if (!File.Exists(param.FullPath)) return;
+
+            System.Diagnostics.Process.Start(param.FullPath.GetParent());
+
         }
     }
 }

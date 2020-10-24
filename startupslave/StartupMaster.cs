@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -102,7 +103,11 @@ namespace core
             {
                 Parallel.ForEach(Parameters, (p) =>
                 {
-                    runner.RunParameter(p);
+                    try
+                    {
+                        runner.RunParameter(p);
+                    }
+                    catch (Win32Exception ex) { Debug.Write($"Win32 Except: {ex.Message}"); }
                 });
             }
         }

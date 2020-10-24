@@ -10,6 +10,8 @@
         Title="MainWindow"
         Height="450"
         Width="800"
+        MinHeight="300"
+        MinWidth="350"
         AllowDrop="True"
         Drop="ItemDropped"
         Loaded="Window_Loaded"
@@ -48,7 +50,8 @@
                   IsReadOnly="False"
                   AutoGenerateColumns="False"
                   Background="Transparent"
-                  BorderBrush="{x:Null}">
+                  BorderBrush="{x:Null}"
+                  MouseDoubleClick="dgParameters_MouseDoubleClick">
             
             <DataGrid.Resources>
                 <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}"

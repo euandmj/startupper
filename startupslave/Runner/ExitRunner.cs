@@ -21,16 +21,16 @@ namespace core.Runner
         {
             return await Task.Run(async () =>
             {
-                Process p = null;
                 try
                 {
-                    p = Process.Start(info);
+                    var p = Process.Start(info);
 
                     await Task.Delay(_timeout, token);
+
                     p.Kill();
 
                     if(!p.HasExited)
-                        throw new ProcessNotExitedException(p.ProcessName, p.Id, p.ExitCode);
+                        throw new RunnerException(p.ProcessName, p.Id, p.ExitCode);
                 }
                 catch (Exception ex)
                 {
